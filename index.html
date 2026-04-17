@@ -2,43 +2,35 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Painel de Contatos — OAB Santana de Parnaíba</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 :root{
-  /* ── Azul Manto Sagrado ── */
-  --bg:#04060f;
-  --bg2:#060912;
-  --panel:#0a0e1c;
-  --panel2:#0d1222;
-  --panel3:#101628;
+  --bg:#08090d;
+  --surface:#0e1018;
+  --surface2:#131620;
+  --line:rgba(255,255,255,.06);
+  --line2:rgba(255,255,255,.1);
 
-  /* Prata celestial — substitui ouro */
-  --silver:#7eb8f7;
-  --silver2:#a8d0ff;
-  --silver3:#cfe5ff;
-  --silver-dim:rgba(126,184,247,.13);
-  --silver-glow:rgba(126,184,247,.06);
-  --silver-pulse:rgba(126,184,247,.04);
+  --gold:#c9a84c;
+  --gold2:#e2c47a;
+  --gold3:#f0d89a;
+  --gold-dim:rgba(201,168,76,.08);
+  --gold-glow:rgba(201,168,76,.14);
 
-  --border:rgba(80,130,220,.12);
-  --border2:rgba(100,160,255,.22);
-  --border3:rgba(120,175,255,.38);
+  --text:#e8e4dc;
+  --text-mid:#8a8070;
+  --text-dim:#3d3830;
 
-  --text:#dde8fa;
-  --text-mid:#8aa8d0;
-  --text-dim:#3a5070;
+  --green:#4caf7d;
+  --green-bg:rgba(76,175,125,.09);
 
-  --wpp:#22c55e;
-  --wpp-bg:rgba(34,197,94,.09);
-
-  --ff:'Outfit',sans-serif;
-  --serif:'Playfair Display',serif;
-  --r:12px;
-  --r-sm:8px;
+  --ff:'DM Sans',sans-serif;
+  --serif:'Cormorant Garamond',serif;
+  --r:8px;
 }
 
 html,body{
@@ -46,608 +38,430 @@ html,body{
   font-family:var(--ff);
   background:var(--bg);
   color:var(--text);
-  font-size:14px;
+  font-size:13px;
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 
-/* Grain overlay */
-body::before{
-  content:'';
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity:.5;
-}
-
-/* Ambient radial azul */
-body::after{
-  content:'';
-  position:fixed;top:-200px;left:50%;transform:translateX(-50%);
-  width:900px;height:600px;
-  background:radial-gradient(ellipse at center,rgba(60,110,220,.07) 0%,transparent 65%);
-  pointer-events:none;z-index:0;
-}
-
-/* ── HEADER ── */
-header{
-  position:sticky;top:0;z-index:200;
-  background:rgba(4,6,15,.90);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-}
-.header-inner{
-  max-width:980px;margin:0 auto;
-  display:flex;align-items:center;
-  padding:0 22px;height:62px;gap:14px;
-}
-
-/* Logo seal */
-.seal{
-  position:relative;width:42px;height:42px;flex-shrink:0;
-}
-.seal-outer{
-  position:absolute;inset:0;border-radius:50%;
-  border:1px solid var(--border2);
-  animation:spinSlow 20s linear infinite;
-}
-.seal-outer::before,.seal-outer::after{
-  content:'';position:absolute;
-  width:4px;height:4px;background:var(--silver);
-  border-radius:50%;top:-2px;left:50%;transform:translateX(-50%);
-}
-.seal-outer::after{top:auto;bottom:-2px;}
-@keyframes spinSlow{to{transform:rotate(360deg)}}
-.seal-inner{
-  position:absolute;inset:5px;border-radius:50%;
-  background:var(--silver-dim);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-}
-.seal-inner svg{width:16px;height:16px;fill:var(--silver)}
-
-.logo-text{flex:1}
-.logo-text .brand{
-  font-family:var(--serif);font-size:14.5px;font-weight:600;
-  color:var(--text);letter-spacing:.1px;line-height:1.2;
-}
-.logo-text .sub{
-  font-size:9.5px;color:var(--text-dim);
-  letter-spacing:1.3px;text-transform:uppercase;
-  margin-top:2px;font-weight:400;
-}
-
-.h-div{
-  width:1px;height:26px;flex-shrink:0;
-  background:linear-gradient(to bottom,transparent,var(--border2),transparent);
-}
-
-.h-badge{
-  font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
-  color:var(--silver);background:var(--silver-dim);
-  border:1px solid var(--border2);
-  padding:4px 12px;border-radius:20px;flex-shrink:0;
-}
-
-.h-clock{
-  margin-left:auto;
-  font-family:'Outfit',monospace;font-size:12px;
-  color:var(--text-dim);letter-spacing:.6px;
-  font-variant-numeric:tabular-nums;flex-shrink:0;
-}
-
-/* ── HERO ── */
-.hero{
-  max-width:980px;margin:0 auto;
-  padding:36px 22px 22px;
-  position:relative;z-index:1;
-}
-.hero-rule{
+/* ── TOPO ── */
+.topo{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,9,13,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line2);
+  padding:0 16px;
+  height:52px;
   display:flex;align-items:center;gap:12px;
-  margin-bottom:22px;
 }
-.hero-rule::before,.hero-rule::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(to right,transparent,var(--border2),transparent);
+.topo-marca{
+  font-family:var(--serif);font-size:15px;font-weight:500;
+  color:var(--gold2);letter-spacing:.2px;flex:1;
+  line-height:1.2;
 }
-.rule-ornament{
-  display:flex;align-items:center;gap:6px;
+.topo-marca small{
+  display:block;font-size:10px;font-weight:400;font-style:italic;
+  color:var(--text-mid);letter-spacing:.5px;font-family:var(--ff);
+  margin-top:1px;
+}
+.topo-relogio{
+  font-family:'DM Sans',monospace;font-size:11px;
+  color:var(--text-dim);font-variant-numeric:tabular-nums;
   flex-shrink:0;
 }
-.rule-diamond{
-  width:5px;height:5px;background:var(--silver);
-  transform:rotate(45deg);
-}
-.rule-text{
-  font-family:var(--serif);font-size:11px;font-style:italic;
-  color:var(--text-dim);letter-spacing:.5px;
-}
 
-.stats-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
+/* ── BUSCA ── */
+.busca-wrap{
+  padding:12px 16px 10px;
+  position:sticky;top:52px;z-index:99;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
 }
-.stat-card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:16px 12px;
-  text-align:center;
-  position:relative;overflow:hidden;
-  transition:border-color .2s;
+.busca-inner{
+  position:relative;max-width:600px;
 }
-.stat-card::after{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(to right,transparent,var(--border2),transparent);
-}
-.stat-card:hover{border-color:var(--border2)}
-.stat-n{
-  font-family:var(--serif);font-size:28px;font-weight:600;
-  color:var(--silver2);line-height:1;margin-bottom:5px;
-  letter-spacing:-1px;
-}
-.stat-l{
-  font-size:9.5px;color:var(--text-dim);
-  letter-spacing:1px;text-transform:uppercase;font-weight:400;
-}
-
-/* ── CONTROLS ── */
-.controls{
-  max-width:980px;margin:0 auto;
-  padding:0 22px 18px;
-  position:relative;z-index:1;
-  display:flex;flex-direction:column;gap:10px;
-}
-.search-wrap{position:relative}
-.search-wrap svg.s-icon{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:15px;height:15px;
-  stroke:var(--text-dim);stroke-width:1.8;fill:none;
-  stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
-}
-.search-wrap input{
+.busca-inner input{
   width:100%;
-  background:var(--panel);
-  border:1px solid var(--border2);
-  border-radius:var(--r);
-  padding:12px 16px 12px 42px;
-  font-family:var(--ff);font-size:14px;
+  background:var(--surface);
+  border:1px solid var(--line2);
+  border-radius:6px;
+  padding:9px 14px 9px 36px;
+  font-family:var(--ff);font-size:13px;
   color:var(--text);outline:none;
-  transition:border-color .2s,box-shadow .2s;
+  transition:border-color .15s;
   letter-spacing:.1px;
 }
-.search-wrap input::placeholder{color:var(--text-dim)}
-.search-wrap input:focus{
-  border-color:var(--border3);
-  box-shadow:0 0 0 3px rgba(80,140,255,.08);
+.busca-inner input::placeholder{color:var(--text-dim)}
+.busca-inner input:focus{border-color:rgba(201,168,76,.3)}
+.busca-icon{
+  position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;pointer-events:none;
+  stroke:var(--text-dim);stroke-width:2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 
-.filters{display:flex;gap:6px;flex-wrap:wrap}
+/* ── STATS ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border-bottom:1px solid var(--line);
+  margin-bottom:0;
+}
+.stat{
+  background:var(--bg);
+  padding:12px 10px;
+  text-align:center;
+}
+.stat-n{
+  font-family:var(--serif);font-size:22px;font-weight:600;
+  color:var(--gold2);line-height:1;
+}
+.stat-l{
+  font-size:9px;color:var(--text-dim);
+  letter-spacing:.8px;text-transform:uppercase;
+  margin-top:3px;
+}
+
+/* ── FILTROS ── */
+.filtros{
+  display:flex;gap:4px;
+  padding:10px 16px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  border-bottom:1px solid var(--line);
+}
+.filtros::-webkit-scrollbar{display:none}
 .flt{
-  padding:6px 14px;border-radius:20px;
+  padding:5px 12px;
+  border-radius:4px;
+  border:1px solid var(--line);
   background:transparent;
-  border:1px solid var(--border);
-  font-family:var(--ff);font-size:11.5px;font-weight:500;
-  color:var(--text-dim);cursor:pointer;
-  transition:all .16s;
-  display:flex;align-items:center;gap:4px;
+  font-family:var(--ff);font-size:11.5px;
+  color:var(--text-mid);
+  cursor:pointer;white-space:nowrap;
+  transition:all .12s;
+  flex-shrink:0;
+}
+.flt:hover{border-color:var(--line2);color:var(--text)}
+.flt.on{
+  background:var(--gold-dim);
+  border-color:rgba(201,168,76,.3);
+  color:var(--gold2);
+}
+
+/* ── CORPO ── */
+.corpo{
+  max-width:700px;
+  padding:0 0 60px;
+}
+
+/* Secao */
+.secao-titulo{
+  padding:16px 16px 6px;
+  display:flex;align-items:center;gap:8px;
+}
+.secao-txt{
+  font-family:var(--serif);font-size:11px;font-style:italic;
+  color:var(--text-dim);letter-spacing:.8px;text-transform:uppercase;
   white-space:nowrap;
 }
-.flt:hover{border-color:var(--border2);color:var(--text-mid)}
-.flt.on{
-  background:var(--silver-dim);
-  border-color:var(--border3);
-  color:var(--silver2);
-}
-.flt svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* ── CONTENT ── */
-.content{
-  max-width:980px;margin:0 auto;
-  padding:0 22px 80px;
-  position:relative;z-index:1;
-}
-
-/* Section head */
-.sec-head{
-  display:flex;align-items:center;gap:10px;
-  margin:30px 0 13px;
-}
-.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
-.sec-label{
-  font-family:var(--serif);font-size:11.5px;font-style:italic;font-weight:400;
-  color:var(--text-dim);letter-spacing:1px;flex-shrink:0;
-}
-.sec-gem{
-  width:4px;height:4px;background:var(--silver);opacity:.5;
-  transform:rotate(45deg);flex-shrink:0;
-}
-
-/* Grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(275px,1fr));
-  gap:10px;
-}
+.secao-linha{flex:1;height:1px;background:var(--line)}
 
 /* Card */
 .card{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  overflow:hidden;
-  transition:border-color .22s,transform .22s,box-shadow .22s;
+  border-bottom:1px solid var(--line);
   position:relative;
 }
-.card::after{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(to right,transparent,var(--border),transparent);
-  pointer-events:none;
-}
-.card:hover{
-  border-color:var(--border2);
-  transform:translateY(-2px);
-  box-shadow:0 10px 40px rgba(0,0,0,.6),0 0 0 1px var(--border);
-}
+.card:last-child{border-bottom:none}
 
-.card.feat{
-  border-color:var(--border3);
-  background:linear-gradient(145deg,var(--panel2) 0%,var(--panel3) 100%);
-  box-shadow:0 4px 24px rgba(60,100,220,.1);
+/* Card header — clicável */
+.c-btn{
+  width:100%;
+  display:flex;align-items:center;
+  padding:11px 16px;
+  gap:10px;
+  background:transparent;
+  border:none;cursor:pointer;
+  text-align:left;
+  transition:background .1s;
+  position:relative;
 }
-.card.feat::after{
-  background:linear-gradient(to right,transparent,rgba(120,175,255,.28),transparent);
-}
-.card.feat:hover{
-  border-color:var(--silver2);
-  box-shadow:0 12px 48px rgba(0,0,0,.6),0 0 30px rgba(80,130,255,.12);
-}
-
-/* Card header */
-.c-hd{
-  padding:12px 14px 11px;
-  display:flex;align-items:center;gap:10px;
-  border-bottom:1px solid var(--border);
-}
-.card.feat .c-hd{border-bottom-color:rgba(100,155,255,.14)}
+.c-btn:active{background:rgba(255,255,255,.02)}
+.card.feat .c-btn{background:rgba(201,168,76,.03)}
+.card.feat .c-btn:active{background:var(--gold-dim)}
 
 .c-ico{
-  width:32px;height:32px;flex-shrink:0;
-  border-radius:var(--r-sm);
-  background:var(--silver-glow);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+  width:28px;text-align:center;
+}
+.c-nome{
+  font-size:13px;font-weight:500;
+  color:var(--text);flex:1;
+  line-height:1.2;text-align:left;
+}
+.card.feat .c-nome{color:var(--gold3)}
+
+.c-meta{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+}
+.c-qtd{
+  font-size:10px;color:var(--text-dim);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:2px 7px;
+  font-variant-numeric:tabular-nums;
+}
+.c-wpp{
+  font-size:9px;font-weight:600;letter-spacing:.4px;
+  color:var(--green);
+  background:var(--green-bg);
+  border:1px solid rgba(76,175,125,.15);
+  border-radius:10px;
+  padding:2px 7px;
+}
+.c-chevron{
+  width:14px;height:14px;flex-shrink:0;
+  stroke:var(--text-dim);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s;
+  margin-left:2px;
+}
+.card.open .c-chevron{transform:rotate(180deg)}
+
+/* Accordion body */
+.c-body{
+  display:none;
+  border-top:1px solid var(--line);
+  background:var(--surface);
+}
+.card.open .c-body{display:block}
+
+/* Número row */
+.n-row{
+  display:flex;align-items:center;
+  padding:8px 16px;
+  gap:8px;
+  border-bottom:1px solid var(--line);
+}
+.n-row:last-child{border-bottom:none}
+.n-row:hover{background:rgba(255,255,255,.015)}
+
+.n-num{
+  font-family:'DM Sans',monospace;
+  font-size:13px;color:var(--text);
+  font-variant-numeric:tabular-nums;
+  flex:1;letter-spacing:.2px;
+}
+.card.feat .n-num{
+  color:var(--gold2);font-weight:500;
   font-size:14px;
 }
-.card.feat .c-ico{background:var(--silver-dim);border-color:var(--border2)}
 
-.c-name{
-  font-size:12.5px;font-weight:500;
-  color:var(--text-mid);flex:1;line-height:1.3;
-}
-.card.feat .c-name{color:var(--text);font-weight:500}
+.n-acts{display:flex;gap:4px;flex-shrink:0}
 
-.c-tag{
-  font-size:9.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
-  padding:3px 9px;border-radius:12px;flex-shrink:0;
-}
-.c-tag-gold{background:var(--silver-dim);color:var(--silver2);border:1px solid var(--border2)}
-.c-tag-wpp{background:var(--wpp-bg);color:var(--wpp);border:1px solid rgba(34,197,94,.2)}
-
-/* Card body */
-.c-body{padding:6px 10px 10px}
-
-/* Phone row */
-.p-row{
-  display:flex;align-items:center;gap:6px;
-  padding:6px 7px;border-radius:var(--r-sm);
-  transition:background .12s;
-}
-.p-row:hover{background:var(--silver-pulse)}
-
-.p-num{
-  font-family:'Outfit',monospace;
-  font-size:12.5px;color:var(--text-mid);flex:1;
-  font-variant-numeric:tabular-nums;letter-spacing:.3px;
-}
-.card.feat .p-num{
-  color:var(--silver3);
-  font-size:14.5px;font-weight:500;
-  letter-spacing:.4px;
-}
-
-.p-acts{display:flex;gap:4px;flex-shrink:0}
-
-/* Buttons */
 .btn{
   display:flex;align-items:center;gap:3px;
-  padding:5px 9px;border-radius:6px;
-  border:1px solid var(--border);
-  font-family:var(--ff);font-size:11px;font-weight:500;
+  padding:5px 9px;
+  border-radius:4px;
+  border:1px solid var(--line2);
+  background:transparent;
+  font-family:var(--ff);font-size:11px;font-weight:400;
+  color:var(--text-mid);
   cursor:pointer;text-decoration:none;
-  background:transparent;color:var(--text-dim);
-  transition:all .15s;white-space:nowrap;
+  transition:all .12s;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 .btn svg{
-  width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;
-  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
+  width:10px;height:10px;
+  stroke:currentColor;stroke-width:2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
 }
-.btn:hover{border-color:var(--border2);color:var(--text-mid);background:var(--silver-glow)}
-.btn-call:hover{
-  border-color:rgba(100,155,255,.32);
-  color:var(--silver2);background:var(--silver-dim);
+.btn:hover{
+  border-color:rgba(201,168,76,.3);
+  color:var(--gold2);
+  background:var(--gold-dim);
 }
 .btn-wpp{
-  background:var(--wpp-bg);
-  border-color:rgba(34,197,94,.2);
-  color:var(--wpp);
+  color:var(--green);
+  border-color:rgba(76,175,125,.2);
+  background:var(--green-bg);
 }
-.btn-wpp:hover{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.4)}
-.btn-copy.ok{
-  border-color:rgba(100,155,255,.32);
-  color:var(--silver);background:var(--silver-dim);
+.btn-wpp:hover{
+  background:rgba(76,175,125,.15);
+  border-color:rgba(76,175,125,.4);
+}
+.btn-ok{
+  color:var(--gold);
+  border-color:rgba(201,168,76,.3);
+  background:var(--gold-dim);
 }
 
 /* Empty */
-.empty{
-  grid-column:1/-1;
-  text-align:center;padding:4rem 1rem;
-  color:var(--text-dim);font-size:13.5px;
+.vazio{
+  padding:40px 16px;text-align:center;
+  color:var(--text-dim);font-size:13px;
 }
-.empty em{display:block;font-size:30px;margin-bottom:14px;opacity:.3;font-style:normal}
 
 /* Toast */
 .toast{
-  position:fixed;bottom:28px;left:50%;
-  transform:translateX(-50%) translateY(12px);
-  background:var(--panel3);
-  border:1px solid var(--border3);
-  padding:10px 20px;border-radius:10px;
-  font-size:12.5px;font-weight:500;color:var(--text-mid);
-  opacity:0;transition:all .22s cubic-bezier(.34,1.56,.64,1);
+  position:fixed;bottom:20px;left:50%;
+  transform:translateX(-50%) translateY(8px);
+  background:var(--surface2);
+  border:1px solid rgba(201,168,76,.25);
+  padding:8px 16px;border-radius:6px;
+  font-size:12px;color:var(--text-mid);
+  opacity:0;transition:all .18s;
   pointer-events:none;z-index:999;
-  display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 36px rgba(0,0,0,.7);
   white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast svg{width:13px;height:13px;stroke:var(--silver);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* Footer */
-footer{
-  position:relative;z-index:1;
-  border-top:1px solid var(--border);
-  padding:22px;text-align:center;
-}
-.ft-inner{max-width:980px;margin:0 auto}
-.ft-rule{
-  display:flex;align-items:center;gap:14px;
-  margin-bottom:10px;
-}
-.ft-rule::before,.ft-rule::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(to right,transparent,var(--border),transparent);
-}
-.ft-orn{color:var(--silver);font-size:10px;letter-spacing:8px;opacity:.3}
-footer p{font-size:11px;color:var(--text-dim);letter-spacing:.5px}
-
-/* ── RESPONSIVE ── */
-@media(max-width:540px){
-  .header-inner{height:56px;padding:0 16px;gap:10px}
-  .h-badge{display:none}
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  .stat-n{font-size:24px}
-  .hero{padding:22px 16px 16px}
-  .controls,.content{padding-left:14px;padding-right:14px}
-  .grid{grid-template-columns:1fr}
-  .card.feat .p-num{font-size:13.5px}
-}
-
-/* ── PAGE LOAD ANIMATIONS ── */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-header{animation:fadeUp .3s ease both}
-.hero{animation:fadeUp .4s .06s ease both}
-.controls{animation:fadeUp .4s .12s ease both}
-.content{animation:fadeUp .4s .18s ease both}
+.toast svg{width:11px;height:11px;stroke:var(--gold);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div class="seal">
-      <div class="seal-outer"></div>
-      <div class="seal-inner">
-        <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5L12 2zm0 7.27L5.09 7 12 3.73 18.91 7 12 9.27zM2 17l10 5 10-5v-5l-10 5L2 12v5z"/></svg>
-      </div>
-    </div>
-    <div class="logo-text">
-      <div class="brand">OAB SP — Assistência Judiciária</div>
-      <div class="sub">Subseção Santana de Parnaíba</div>
-    </div>
-    <div class="h-div"></div>
-    <div class="h-badge">Painel de Contatos</div>
-    <div class="h-clock" id="clock">--:--:--</div>
+<header class="topo">
+  <div class="topo-marca">
+    OAB SP — Assistência Judiciária
+    <small>Subseção Santana de Parnaíba</small>
   </div>
+  <div class="topo-relogio" id="clock">--:--</div>
 </header>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-rule">
-    <div class="rule-ornament">
-      <div class="rule-diamond"></div>
-      <div class="rule-text">Ramais &amp; Contatos</div>
-      <div class="rule-diamond"></div>
-    </div>
+<div class="stats" id="stats"></div>
+
+<div class="busca-wrap">
+  <div class="busca-inner">
+    <svg class="busca-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" id="busca" placeholder="Buscar setor ou número…" oninput="render()" autocomplete="off" spellcheck="false">
   </div>
-  <div class="stats-row" id="stats"></div>
 </div>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <div class="search-wrap">
-    <svg class="s-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="search" placeholder="Buscar setor ou número..." oninput="render()" autocomplete="off" spellcheck="false">
-  </div>
-  <div class="filters" id="filters"></div>
-</div>
+<div class="filtros" id="filtros"></div>
 
-<!-- CONTENT -->
-<div class="content" id="content"></div>
+<div class="corpo" id="corpo"></div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-inner">
-    <div class="ft-rule"><div class="ft-orn">◆ ◆ ◆</div></div>
-    <p>OAB SP — Assistência Judiciária Gratuita &nbsp;·&nbsp; Subseção Santana de Parnaíba</p>
-  </div>
-</footer>
-
-<!-- TOAST -->
 <div class="toast" id="toast">
   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
   <span id="toast-msg"></span>
 </div>
 
 <script>
-/* ══════════════════════════════════
-   DATA
-══════════════════════════════════ */
-var SEC = [
-  {
-    label:"Principal",
-    cards:[
-      {
-        id:"secretaria",name:"Secretaria",icon:"📋",feat:true,
-        phones:[{num:"+55 11 93724-8448",wpp:true}]
-      },
-      {
-        id:"aj_local",name:"Assistência Judiciária — Local",icon:"⚖️",
-        phones:[{num:"(11) 4154-5191",wpp:false}]
-      }
-    ]
-  },
-  {
-    label:"Atendimento & Recepção",
-    cards:[
-      {id:"central",name:"Central",icon:"📞",
-       phones:[{num:"(11) 3249-3502"},{num:"(11) 3249-3503"},{num:"(11) 3249-3504"},{num:"(11) 3249-3505"}]},
-      {id:"protocolo",name:"Protocolo",icon:"📬",
-       phones:[{num:"(11) 3249-3612"},{num:"(11) 3249-3613"},{num:"(11) 3249-3614"},{num:"(11) 3249-3615"}]},
-      {id:"ouvidoria",name:"Ouvidoria",icon:"📣",
-       phones:[{num:"(11) 3249-3527"},{num:"(11) 3249-3528"},{num:"(11) 3249-3529"},{num:"(11) 3249-3530"},{num:"(11) 3249-3531"},{num:"(11) 3249-3532"},{num:"(11) 3249-3533"}]},
-      {id:"recpolv",name:"Recepção — Largo da Pólvora",icon:"🚪",
-       phones:[{num:"(11) 3349-6121"}]},
-      {id:"recmp881",name:"Recepção MP88 — 01",icon:"🚪",
-       phones:[{num:"(11) 3349-7704"}]},
-      {id:"recmp882",name:"Recepção MP88 — 02",icon:"🚪",
-       phones:[{num:"(11) 3349-7703"}]},
-      {id:"resgate",name:"Resgate",icon:"🆘",
-       phones:[{num:"(11) 3249-3623"}]}
-    ]
-  },
-  {
-    label:"Jurídico & Institucional",
-    cards:[
-      {id:"aj",name:"AJ — Assistência Judiciária SP",icon:"🏛️",
-       phones:[
-         {num:"(11) 3349-7600"},{num:"(11) 3349-7601"},{num:"(11) 3349-7603"},{num:"(11) 3349-7604"},
-         {num:"(11) 3349-7605"},{num:"(11) 3349-7606"},{num:"(11) 3349-7607"},{num:"(11) 3349-7608"},
-         {num:"(11) 3349-7609"},{num:"(11) 3349-7610"},{num:"(11) 3349-7611"},{num:"(11) 3349-7612"},
-         {num:"(11) 3349-7613"},{num:"(11) 3349-7614"},{num:"(11) 3349-7615"},{num:"(11) 3349-7616"},
-         {num:"(11) 3349-7617"},{num:"(11) 3349-7618"},{num:"(11) 3349-7619"},{num:"(11) 3349-7620"}
-       ]},
-      {id:"prerrog",name:"Prerrogativas",icon:"⚡",
-       phones:[{num:"(11) 3349-7503"},{num:"(11) 3349-7504"},{num:"(11) 3349-7505"},{num:"(11) 3349-7506"},{num:"(11) 3349-7507"},{num:"(11) 3349-7508"},{num:"(11) 3349-7509"}]},
-      {id:"camaras",name:"Câmaras Recursais",icon:"⚖️",
-       phones:[
-         {num:"(11) 3349-7575"},{num:"(11) 3349-7576"},{num:"(11) 3349-7577"},{num:"(11) 3349-7578"},
-         {num:"(11) 3349-7579"},{num:"(11) 3349-7580"},{num:"(11) 3349-7581"},{num:"(11) 3349-7582"},
-         {num:"(11) 3349-7583"},{num:"(11) 3349-7584"},{num:"(11) 3349-7585"},{num:"(11) 3349-7586"},
-         {num:"(11) 3349-7587"},{num:"(11) 3349-7588"},{num:"(11) 3349-7589"},{num:"(11) 3349-7591"},
-         {num:"(11) 3349-7592"},{num:"(11) 3349-7593"},{num:"(11) 3349-7594"},{num:"(11) 3349-7595"}
-       ]},
-      {id:"corrted",name:"Corregedoria TED",icon:"🔍",
-       phones:[{num:"(11) 3349-7701"},{num:"(11) 3349-7702"}]},
-      {id:"deptsub",name:"Depto. de Subseções",icon:"🏢",
-       phones:[{num:"(11) 3349-7533"},{num:"(11) 3349-7540"},{num:"(11) 3111-3280"},{num:"(11) 3111-3281"},{num:"(11) 3111-3282"},{num:"(11) 3111-3283"}]},
-      {id:"forca",name:"Força Tarefa",icon:"🚨",
-       phones:[{num:"(11) 3349-7669"},{num:"(11) 3349-7670"},{num:"(11) 3349-7671"},{num:"(11) 3349-7672"}]}
-    ]
-  },
-  {
-    label:"Ensino & Cultura",
-    cards:[
-      {id:"esa",name:"ESA",icon:"🎓",
-       phones:[
-         {num:"(11) 3346-6800"},{num:"(11) 3346-6801"},{num:"(11) 3346-6804"},{num:"(11) 3346-6807"},
-         {num:"(11) 3346-6809"},{num:"(11) 3346-6814"},{num:"(11) 3346-6816"},{num:"(11) 3346-6822"},
-         {num:"(11) 3346-6823"},{num:"(11) 3346-6824"},{num:"(11) 3346-6825"},{num:"(11) 3346-6838"},
-         {num:"(11) 3346-6839"},{num:"(11) 3346-6850"},{num:"(11) 3346-6853"},{num:"(11) 3346-6856"},{num:"(11) 3346-6866"}
-       ]},
-      {id:"posgrad",name:"Pós-Graduação",icon:"📖",phones:[{num:"(11) 3346-6808"}]},
-      {id:"escolaprер",name:"Escola de Prerrogativas",icon:"📜",phones:[{num:"(11) 3346-6820"}]},
-      {id:"cultural",name:"Cultural",icon:"🎭",
-       phones:[{num:"(11) 3249-3514"},{num:"(11) 3249-3515"},{num:"(11) 3249-3516"},{num:"(11) 3249-3517"},{num:"(11) 3249-3518"},{num:"(11) 3249-3519"},{num:"(11) 3249-3521"},{num:"(11) 3249-3522"},{num:"(11) 3249-3523"},{num:"(11) 3249-3524"},{num:"(11) 3249-3525"}]},
-      {id:"biblioteca",name:"Biblioteca",icon:"📚",
-       phones:[{num:"(11) 3249-3508"},{num:"(11) 3249-3509"},{num:"(11) 3249-3510"},{num:"(11) 3249-3511"},{num:"(11) 3249-3512"}]},
-      {id:"exame",name:"Exame",icon:"📝",
-       phones:[{num:"(11) 3249-3564"},{num:"(11) 3249-3565"},{num:"(11) 3249-3566"},{num:"(11) 3249-3567"},{num:"(11) 3249-3568"}]}
-    ]
-  },
-  {
-    label:"Administrativo & Financeiro",
-    cards:[
-      {id:"cadastro",name:"Cadastro",icon:"🗂️",
-       phones:[{num:"(11) 3249-3590"},{num:"(11) 3249-3591"},{num:"(11) 3249-3592"},{num:"(11) 3249-3593"},{num:"(11) 3249-3594"},{num:"(11) 3249-3595"},{num:"(11) 3249-3596"},{num:"(11) 3249-3597"},{num:"(11) 3249-3598"},{num:"(11) 3249-3599"},{num:"(11) 3249-3601"},{num:"(11) 3249-3602"},{num:"(11) 3249-3603"}]},
-      {id:"rh",name:"RH",icon:"👥",
-       phones:[{num:"(11) 3249-6100"},{num:"(11) 3249-6101"},{num:"(11) 3249-6102"},{num:"(11) 3249-6103"},{num:"(11) 3249-6104"},{num:"(11) 3249-6105"},{num:"(11) 3249-6106"},{num:"(11) 3249-6107"},{num:"(11) 3249-6108"},{num:"(11) 3249-6109"},{num:"(11) 3249-6110"},{num:"(11) 3249-6111"},{num:"(11) 3249-6112"},{num:"(11) 3249-6113"},{num:"(11) 3249-6114"},{num:"(11) 3249-6116"},{num:"(11) 3249-6117"},{num:"(11) 3249-6118"},{num:"(11) 3249-6119"},{num:"(11) 3249-6120"}]},
-      {id:"financeiro",name:"Financeiro",icon:"💰",
-       phones:[{num:"(11) 3249-6122"},{num:"(11) 3249-6123"},{num:"(11) 3249-6124"},{num:"(11) 3249-6125"},{num:"(11) 3249-6126"},{num:"(11) 3249-6127"},{num:"(11) 3249-6128"},{num:"(11) 3249-6129"},{num:"(11) 3249-6130"},{num:"(11) 3249-6131"},{num:"(11) 3249-6132"},{num:"(11) 3249-6133"},{num:"(11) 3249-6134"},{num:"(11) 3249-6135"},{num:"(11) 3249-6136"},{num:"(11) 3249-6137"},{num:"(11) 3249-6138"},{num:"(11) 3249-6139"},{num:"(11) 3249-6140"}]},
-      {id:"controladoria",name:"Controladoria",icon:"📊",
-       phones:[{num:"(11) 3249-6143"},{num:"(11) 3249-6144"},{num:"(11) 3249-6145"},{num:"(11) 3249-6146"},{num:"(11) 3249-6147"},{num:"(11) 3249-6148"},{num:"(11) 3249-6149"},{num:"(11) 3249-6150"},{num:"(11) 3249-6151"},{num:"(11) 3249-6152"}]},
-      {id:"logistica",name:"Logística",icon:"🚚",
-       phones:[{num:"(11) 3249-6178"},{num:"(11) 3249-6179"},{num:"(11) 3249-6180"},{num:"(11) 3249-6181"},{num:"(11) 3249-6182"},{num:"(11) 3249-6183"}]},
-      {id:"almox",name:"Almoxarifado",icon:"📦",
-       phones:[{num:"(11) 3349-7558"},{num:"(11) 3349-7597"},{num:"(11) 3349-7599"}]},
-      {id:"engenharia",name:"Engenharia",icon:"🔧",
-       phones:[{num:"(11) 3349-7527"},{num:"(11) 3349-7528"},{num:"(11) 3349-7529"},{num:"(11) 3349-7530"},{num:"(11) 3349-7531"},{num:"(11) 3349-7533"},{num:"(11) 3349-7534"},{num:"(11) 3349-7535"},{num:"(11) 3349-7536"},{num:"(11) 3349-7537"},{num:"(11) 3349-7538"},{num:"(11) 3349-7539"},{num:"(11) 3349-7540"},{num:"(11) 3349-7541"},{num:"(11) 3349-7542"}]}
-    ]
-  },
-  {
-    label:"Tecnologia & Sistemas",
-    cards:[
-      {id:"helpdesk",name:"HELPDESK",icon:"💻",phones:[{num:"(11) 2571-8760"}]},
-      {id:"dasi",name:"DASI",icon:"🖥️",
-       phones:[{num:"(11) 3349-7560"},{num:"(11) 3349-7561"},{num:"(11) 3349-7562"},{num:"(11) 3349-7563"},{num:"(11) 3349-7564"},{num:"(11) 3349-7565"}]},
-      {id:"dgi",name:"DGI (SGQ)",icon:"📋",
-       phones:[{num:"(11) 3249-3535"},{num:"(11) 3249-3536"},{num:"(11) 3249-3537"},{num:"(11) 3249-3538"},{num:"(11) 3249-3539"},{num:"(11) 3249-3540"},{num:"(11) 3249-3541"}]},
-      {id:"sinad",name:"SINAD",icon:"🔗",
-       phones:[{num:"(11) 3249-3542"},{num:"(11) 3249-3544"},{num:"(11) 3249-3546"},{num:"(11) 3249-3547"},{num:"(11) 3249-3548"},{num:"(11) 3249-3549"},{num:"(11) 3249-3551"},{num:"(11) 3249-3554"},{num:"(11) 3249-3555"},{num:"(11) 3249-3556"},{num:"(11) 3249-3557"},{num:"(11) 3249-3559"},{num:"(11) 3249-3563"}]},
-      {id:"inscricoes",name:"Inscrições",icon:"✍️",
-       phones:[{num:"(11) 3249-3605"},{num:"(11) 3249-3606"},{num:"(11) 3249-3607"},{num:"(11) 3249-3608"},{num:"(11) 3249-3609"},{num:"(11) 3249-3610"},{num:"(11) 3249-3611"}]},
-      {id:"microfilm",name:"Microfilmagem",icon:"📷",
-       phones:[{num:"(11) 3249-3626"},{num:"(11) 3249-3627"},{num:"(11) 3249-3628"},{num:"(11) 3249-3629"}]}
-    ]
-  }
+/* ════════════════════════════
+   DADOS
+════════════════════════════ */
+var SEC=[
+  {label:"Principal",cards:[
+    {id:"secretaria",name:"Secretaria",icon:"📋",feat:true,
+     phones:[{num:"+55 11 93724-8448",wpp:true}]},
+    {id:"aj_local",name:"Assistência Judiciária — Local",icon:"⚖️",
+     phones:[{num:"(11) 4154-5191"}]}
+  ]},
+  {label:"Atendimento & Recepção",cards:[
+    {id:"central",name:"Central",icon:"📞",
+     phones:[{num:"(11) 3249-3502"},{num:"(11) 3249-3503"},{num:"(11) 3249-3504"},{num:"(11) 3249-3505"}]},
+    {id:"protocolo",name:"Protocolo",icon:"📬",
+     phones:[{num:"(11) 3249-3612"},{num:"(11) 3249-3613"},{num:"(11) 3249-3614"},{num:"(11) 3249-3615"}]},
+    {id:"ouvidoria",name:"Ouvidoria",icon:"📣",
+     phones:[{num:"(11) 3249-3527"},{num:"(11) 3249-3528"},{num:"(11) 3249-3529"},{num:"(11) 3249-3530"},{num:"(11) 3249-3531"},{num:"(11) 3249-3532"},{num:"(11) 3249-3533"}]},
+    {id:"recpolv",name:"Recepção — Largo da Pólvora",icon:"🚪",
+     phones:[{num:"(11) 3349-6121"}]},
+    {id:"recmp881",name:"Recepção MP88 — 01",icon:"🚪",
+     phones:[{num:"(11) 3349-7704"}]},
+    {id:"recmp882",name:"Recepção MP88 — 02",icon:"🚪",
+     phones:[{num:"(11) 3349-7703"}]},
+    {id:"resgate",name:"Resgate",icon:"🆘",
+     phones:[{num:"(11) 3249-3623"}]}
+  ]},
+  {label:"Jurídico & Institucional",cards:[
+    {id:"aj",name:"AJ — Assistência Judiciária SP",icon:"🏛️",
+     phones:[
+       {num:"(11) 3349-7600"},{num:"(11) 3349-7601"},{num:"(11) 3349-7603"},{num:"(11) 3349-7604"},
+       {num:"(11) 3349-7605"},{num:"(11) 3349-7606"},{num:"(11) 3349-7607"},{num:"(11) 3349-7608"},
+       {num:"(11) 3349-7609"},{num:"(11) 3349-7610"},{num:"(11) 3349-7611"},{num:"(11) 3349-7612"},
+       {num:"(11) 3349-7613"},{num:"(11) 3349-7614"},{num:"(11) 3349-7615"},{num:"(11) 3349-7616"},
+       {num:"(11) 3349-7617"},{num:"(11) 3349-7618"},{num:"(11) 3349-7619"},{num:"(11) 3349-7620"}
+     ]},
+    {id:"prerrog",name:"Prerrogativas",icon:"⚡",
+     phones:[{num:"(11) 3349-7503"},{num:"(11) 3349-7504"},{num:"(11) 3349-7505"},{num:"(11) 3349-7506"},{num:"(11) 3349-7507"},{num:"(11) 3349-7508"},{num:"(11) 3349-7509"}]},
+    {id:"camaras",name:"Câmaras Recursais",icon:"⚖️",
+     phones:[
+       {num:"(11) 3349-7575"},{num:"(11) 3349-7576"},{num:"(11) 3349-7577"},{num:"(11) 3349-7578"},
+       {num:"(11) 3349-7579"},{num:"(11) 3349-7580"},{num:"(11) 3349-7581"},{num:"(11) 3349-7582"},
+       {num:"(11) 3349-7583"},{num:"(11) 3349-7584"},{num:"(11) 3349-7585"},{num:"(11) 3349-7586"},
+       {num:"(11) 3349-7587"},{num:"(11) 3349-7588"},{num:"(11) 3349-7589"},{num:"(11) 3349-7591"},
+       {num:"(11) 3349-7592"},{num:"(11) 3349-7593"},{num:"(11) 3349-7594"},{num:"(11) 3349-7595"}
+     ]},
+    {id:"corrted",name:"Corregedoria TED",icon:"🔍",
+     phones:[{num:"(11) 3349-7701"},{num:"(11) 3349-7702"}]},
+    {id:"deptsub",name:"Depto. de Subseções",icon:"🏢",
+     phones:[{num:"(11) 3349-7533"},{num:"(11) 3349-7540"},{num:"(11) 3111-3280"},{num:"(11) 3111-3281"},{num:"(11) 3111-3282"},{num:"(11) 3111-3283"}]},
+    {id:"forca",name:"Força Tarefa",icon:"🚨",
+     phones:[{num:"(11) 3349-7669"},{num:"(11) 3349-7670"},{num:"(11) 3349-7671"},{num:"(11) 3349-7672"}]}
+  ]},
+  {label:"Ensino & Cultura",cards:[
+    {id:"esa",name:"ESA",icon:"🎓",
+     phones:[
+       {num:"(11) 3346-6800"},{num:"(11) 3346-6801"},{num:"(11) 3346-6804"},{num:"(11) 3346-6807"},
+       {num:"(11) 3346-6809"},{num:"(11) 3346-6814"},{num:"(11) 3346-6816"},{num:"(11) 3346-6822"},
+       {num:"(11) 3346-6823"},{num:"(11) 3346-6824"},{num:"(11) 3346-6825"},{num:"(11) 3346-6838"},
+       {num:"(11) 3346-6839"},{num:"(11) 3346-6850"},{num:"(11) 3346-6853"},{num:"(11) 3346-6856"},{num:"(11) 3346-6866"}
+     ]},
+    {id:"posgrad",name:"Pós-Graduação",icon:"📖",phones:[{num:"(11) 3346-6808"}]},
+    {id:"escolaprep",name:"Escola de Prerrogativas",icon:"📜",phones:[{num:"(11) 3346-6820"}]},
+    {id:"cultural",name:"Cultural",icon:"🎭",
+     phones:[{num:"(11) 3249-3514"},{num:"(11) 3249-3515"},{num:"(11) 3249-3516"},{num:"(11) 3249-3517"},{num:"(11) 3249-3518"},{num:"(11) 3249-3519"},{num:"(11) 3249-3521"},{num:"(11) 3249-3522"},{num:"(11) 3249-3523"},{num:"(11) 3249-3524"},{num:"(11) 3249-3525"}]},
+    {id:"biblioteca",name:"Biblioteca",icon:"📚",
+     phones:[{num:"(11) 3249-3508"},{num:"(11) 3249-3509"},{num:"(11) 3249-3510"},{num:"(11) 3249-3511"},{num:"(11) 3249-3512"}]},
+    {id:"exame",name:"Exame",icon:"📝",
+     phones:[{num:"(11) 3249-3564"},{num:"(11) 3249-3565"},{num:"(11) 3249-3566"},{num:"(11) 3249-3567"},{num:"(11) 3249-3568"}]}
+  ]},
+  {label:"Administrativo & Financeiro",cards:[
+    {id:"cadastro",name:"Cadastro",icon:"🗂️",
+     phones:[{num:"(11) 3249-3590"},{num:"(11) 3249-3591"},{num:"(11) 3249-3592"},{num:"(11) 3249-3593"},{num:"(11) 3249-3594"},{num:"(11) 3249-3595"},{num:"(11) 3249-3596"},{num:"(11) 3249-3597"},{num:"(11) 3249-3598"},{num:"(11) 3249-3599"},{num:"(11) 3249-3601"},{num:"(11) 3249-3602"},{num:"(11) 3249-3603"}]},
+    {id:"rh",name:"RH",icon:"👥",
+     phones:[{num:"(11) 3249-6100"},{num:"(11) 3249-6101"},{num:"(11) 3249-6102"},{num:"(11) 3249-6103"},{num:"(11) 3249-6104"},{num:"(11) 3249-6105"},{num:"(11) 3249-6106"},{num:"(11) 3249-6107"},{num:"(11) 3249-6108"},{num:"(11) 3249-6109"},{num:"(11) 3249-6110"},{num:"(11) 3249-6111"},{num:"(11) 3249-6112"},{num:"(11) 3249-6113"},{num:"(11) 3249-6114"},{num:"(11) 3249-6116"},{num:"(11) 3249-6117"},{num:"(11) 3249-6118"},{num:"(11) 3249-6119"},{num:"(11) 3249-6120"}]},
+    {id:"financeiro",name:"Financeiro",icon:"💰",
+     phones:[{num:"(11) 3249-6122"},{num:"(11) 3249-6123"},{num:"(11) 3249-6124"},{num:"(11) 3249-6125"},{num:"(11) 3249-6126"},{num:"(11) 3249-6127"},{num:"(11) 3249-6128"},{num:"(11) 3249-6129"},{num:"(11) 3249-6130"},{num:"(11) 3249-6131"},{num:"(11) 3249-6132"},{num:"(11) 3249-6133"},{num:"(11) 3249-6134"},{num:"(11) 3249-6135"},{num:"(11) 3249-6136"},{num:"(11) 3249-6137"},{num:"(11) 3249-6138"},{num:"(11) 3249-6139"},{num:"(11) 3249-6140"}]},
+    {id:"controladoria",name:"Controladoria",icon:"📊",
+     phones:[{num:"(11) 3249-6143"},{num:"(11) 3249-6144"},{num:"(11) 3249-6145"},{num:"(11) 3249-6146"},{num:"(11) 3249-6147"},{num:"(11) 3249-6148"},{num:"(11) 3249-6149"},{num:"(11) 3249-6150"},{num:"(11) 3249-6151"},{num:"(11) 3249-6152"}]},
+    {id:"logistica",name:"Logística",icon:"🚚",
+     phones:[{num:"(11) 3249-6178"},{num:"(11) 3249-6179"},{num:"(11) 3249-6180"},{num:"(11) 3249-6181"},{num:"(11) 3249-6182"},{num:"(11) 3249-6183"}]},
+    {id:"almox",name:"Almoxarifado",icon:"📦",
+     phones:[{num:"(11) 3349-7558"},{num:"(11) 3349-7597"},{num:"(11) 3349-7599"}]},
+    {id:"engenharia",name:"Engenharia",icon:"🔧",
+     phones:[{num:"(11) 3349-7527"},{num:"(11) 3349-7528"},{num:"(11) 3349-7529"},{num:"(11) 3349-7530"},{num:"(11) 3349-7531"},{num:"(11) 3349-7533"},{num:"(11) 3349-7534"},{num:"(11) 3349-7535"},{num:"(11) 3349-7536"},{num:"(11) 3349-7537"},{num:"(11) 3349-7538"},{num:"(11) 3349-7539"},{num:"(11) 3349-7540"},{num:"(11) 3349-7541"},{num:"(11) 3349-7542"}]}
+  ]},
+  {label:"Tecnologia & Sistemas",cards:[
+    {id:"helpdesk",name:"HELPDESK",icon:"💻",phones:[{num:"(11) 2571-8760"}]},
+    {id:"dasi",name:"DASI",icon:"🖥️",
+     phones:[{num:"(11) 3349-7560"},{num:"(11) 3349-7561"},{num:"(11) 3349-7562"},{num:"(11) 3349-7563"},{num:"(11) 3349-7564"},{num:"(11) 3349-7565"}]},
+    {id:"dgi",name:"DGI (SGQ)",icon:"📋",
+     phones:[{num:"(11) 3249-3535"},{num:"(11) 3249-3536"},{num:"(11) 3249-3537"},{num:"(11) 3249-3538"},{num:"(11) 3249-3539"},{num:"(11) 3249-3540"},{num:"(11) 3249-3541"}]},
+    {id:"sinad",name:"SINAD",icon:"🔗",
+     phones:[{num:"(11) 3249-3542"},{num:"(11) 3249-3544"},{num:"(11) 3249-3546"},{num:"(11) 3249-3547"},{num:"(11) 3249-3548"},{num:"(11) 3249-3549"},{num:"(11) 3249-3551"},{num:"(11) 3249-3554"},{num:"(11) 3249-3555"},{num:"(11) 3249-3556"},{num:"(11) 3249-3557"},{num:"(11) 3249-3559"},{num:"(11) 3249-3563"}]},
+    {id:"inscricoes",name:"Inscrições",icon:"✍️",
+     phones:[{num:"(11) 3249-3605"},{num:"(11) 3249-3606"},{num:"(11) 3249-3607"},{num:"(11) 3249-3608"},{num:"(11) 3249-3609"},{num:"(11) 3249-3610"},{num:"(11) 3249-3611"}]},
+    {id:"microfilm",name:"Microfilmagem",icon:"📷",
+     phones:[{num:"(11) 3249-3626"},{num:"(11) 3249-3627"},{num:"(11) 3249-3628"},{num:"(11) 3249-3629"}]}
+  ]}
 ];
 
-/* ══════════════════════════════════
+/* ════════════════════════════
    UTILS
-══════════════════════════════════ */
-function callURL(n){var c=n.replace(/\D/g,'');return 'tel:+'+(c.length<=11?'55'+c:c);}
-function wppURL(n){var c=n.replace(/\D/g,'');return 'https://wa.me/'+(c.length<=11?'55'+c:c);}
+════════════════════════════ */
+function tel(n){var c=n.replace(/\D/g,'');return 'tel:+'+(c.length<=11?'55'+c:c);}
+function wpp(n){var c=n.replace(/\D/g,'');return 'https://wa.me/'+(c.length<=11?'55'+c:c);}
 function allCards(){return SEC.reduce(function(a,s){return a.concat(s.cards);},[])}
 
-/* ══════════════════════════════════
+/* ════════════════════════════
    STATS
-══════════════════════════════════ */
+════════════════════════════ */
 function buildStats(){
   var cards=allCards();
   var totalP=cards.reduce(function(a,c){return a+c.phones.length;},0);
@@ -659,38 +473,45 @@ function buildStats(){
     {n:wppC,l:'WhatsApp'}
   ];
   document.getElementById('stats').innerHTML=d.map(function(s){
-    return '<div class="stat-card"><div class="stat-n">'+s.n+'</div><div class="stat-l">'+s.l+'</div></div>';
+    return '<div class="stat"><div class="stat-n">'+s.n+'</div><div class="stat-l">'+s.l+'</div></div>';
   }).join('');
 }
 
-/* ══════════════════════════════════
-   FILTERS
-══════════════════════════════════ */
-var activeFilter='all';
-function buildFilters(){
-  var el=document.getElementById('filters');
-  var opts=[{k:'all',l:'Todos os contatos'}]
+/* ════════════════════════════
+   FILTROS
+════════════════════════════ */
+var filtroAtivo='all';
+function buildFiltros(){
+  var opts=[{k:'all',l:'Todos'}]
     .concat(SEC.map(function(s){return {k:s.label,l:s.label};}))
-    .concat([{k:'wpp',l:'Com WhatsApp',wpp:true}]);
-  el.innerHTML=opts.map(function(o){
-    var ic=o.wpp?'<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>':'';
-    return '<button class="flt'+(activeFilter===o.k?' on':'')+'" onclick="setFilter(\''+o.k.replace(/'/g,"\\'")+'\')">'+ic+o.l+'</button>';
+    .concat([{k:'wpp',l:'WhatsApp'}]);
+  document.getElementById('filtros').innerHTML=opts.map(function(o){
+    return '<button class="flt'+(filtroAtivo===o.k?' on':'')+'" onclick="setFiltro(\''+o.k.replace(/'/g,"\\'")+'\')">'+o.l+'</button>';
   }).join('');
 }
-function setFilter(f){activeFilter=f;buildFilters();render();}
+function setFiltro(f){filtroAtivo=f;buildFiltros();render();}
 
-/* ══════════════════════════════════
+/* ════════════════════════════
    RENDER
-══════════════════════════════════ */
+════════════════════════════ */
+/* estado aberto */
+var abertos={};
+
+function toggle(id){
+  abertos[id]=!abertos[id];
+  render();
+}
+
 function render(){
-  var q=(document.getElementById('search').value||'').toLowerCase().trim();
-  var out=document.getElementById('content');
+  var q=(document.getElementById('busca').value||'').toLowerCase().trim();
+  var out=document.getElementById('corpo');
   var html='';var total=0;
+  var hasQ=!!q;
 
   SEC.forEach(function(sec){
     var cards=sec.cards.filter(function(card){
-      if(activeFilter==='wpp'){if(!card.phones.some(function(p){return p.wpp;})) return false;}
-      else if(activeFilter!=='all'&&activeFilter!==sec.label) return false;
+      if(filtroAtivo==='wpp'){if(!card.phones.some(function(p){return p.wpp;})) return false;}
+      else if(filtroAtivo!=='all'&&filtroAtivo!==sec.label) return false;
       if(!q) return true;
       if(card.name.toLowerCase().indexOf(q)>=0) return true;
       return card.phones.some(function(p){return p.num.toLowerCase().indexOf(q)>=0;});
@@ -698,95 +519,92 @@ function render(){
     if(!cards.length) return;
     total+=cards.length;
 
-    html+='<div class="sec-head">'
-      +'<div class="sec-label">'+sec.label+'</div>'
-      +'<div class="sec-gem"></div>'
-      +'<div class="sec-line"></div>'
-      +'</div><div class="grid">';
+    html+='<div class="secao-titulo">'
+      +'<div class="secao-txt">'+sec.label+'</div>'
+      +'<div class="secao-linha"></div>'
+      +'</div>';
 
     cards.forEach(function(card){
-      var phones=activeFilter==='wpp'?card.phones.filter(function(p){return p.wpp;}):card.phones;
-      if(q) phones=phones.filter(function(p){
-        return card.name.toLowerCase().indexOf(q)>=0||p.num.toLowerCase().indexOf(q)>=0;
-      });
-      var wppC=card.phones.filter(function(p){return p.wpp;}).length;
+      var isOpen=!!(abertos[card.id]||(hasQ&&card.phones.some(function(p){return p.num.toLowerCase().indexOf(q)>=0;})));
       var f=card.feat;
+      var wppCount=card.phones.filter(function(p){return p.wpp;}).length;
 
-      html+='<div class="card'+(f?' feat':'')+'">';
-      html+='<div class="c-hd">'
-        +'<div class="c-ico">'+card.icon+'</div>'
-        +'<div class="c-name">'+card.name+'</div>';
-      if(f) html+='<span class="c-tag c-tag-gold">Prioritário</span>';
-      else if(wppC) html+='<span class="c-tag c-tag-wpp">WA</span>';
-      html+='</div>';
+      html+='<div class="card'+(f?' feat':'')+(isOpen?' open':'')+'" id="wrap_'+card.id+'">';
 
+      /* header */
+      html+='<button class="c-btn" onclick="toggle(\''+card.id+'\')">'
+        +'<span class="c-ico">'+card.icon+'</span>'
+        +'<span class="c-nome">'+card.name+'</span>'
+        +'<span class="c-meta">';
+      if(card.phones.length>1) html+='<span class="c-qtd">'+card.phones.length+'</span>';
+      if(wppCount) html+='<span class="c-wpp">WA</span>';
+      html+='</span>'
+        +'<svg class="c-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>'
+        +'</button>';
+
+      /* body */
       html+='<div class="c-body">';
+      var phones=filtroAtivo==='wpp'?card.phones.filter(function(p){return p.wpp;}):card.phones;
       phones.forEach(function(p,i){
-        var bid='b_'+card.id+'_'+i;
-        var isWpp=!!p.wpp;
-        html+='<div class="p-row">'
-          +'<span class="p-num">'+p.num+'</span>'
-          +'<div class="p-acts">';
-        if(isWpp){
-          html+='<a href="'+wppURL(p.num)+'" class="btn btn-wpp" target="_blank">'
+        var bid='btn_'+card.id+'_'+i;
+        html+='<div class="n-row">'
+          +'<span class="n-num">'+p.num+'</span>'
+          +'<div class="n-acts">';
+        if(p.wpp){
+          html+='<a href="'+wpp(p.num)+'" class="btn btn-wpp" target="_blank">'
             +'<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WA</a>';
         }
-        html+='<a href="'+callURL(p.num)+'" class="btn btn-call">'
+        html+='<a href="'+tel(p.num)+'" class="btn">'
           +'<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.62 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.71-1.71a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Ligar</a>';
-        html+='<button class="btn btn-copy" id="'+bid+'" onclick="cpNum(\''+bid+'\',\''+p.num.replace(/'/g,"\\'")+'\')">'
-          +'<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
-          +'</button>';
+        html+='<button class="btn" id="'+bid+'" onclick="copiar(\''+bid+'\',\''+p.num.replace(/'/g,"\\'")+'\')">Copiar</button>';
         html+='</div></div>';
       });
-      html+='</div></div>';
+      html+='</div>';
+      html+='</div>';
     });
-    html+='</div>';
   });
 
-  if(!total) html='<div class="empty"><em>🔍</em>Nenhum resultado para "'+q+'"</div>';
+  if(!total) html='<div class="vazio">Nenhum resultado para "'+q+'"</div>';
   out.innerHTML=html;
 }
 
-/* ══════════════════════════════════
-   COPY
-══════════════════════════════════ */
-var _t;
-function cpNum(id,num){
-  navigator.clipboard.writeText(num).then(function(){
-    var b=document.getElementById(id);
-    if(b){
-      b.classList.add('ok');
-      b.innerHTML='<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg>';
-      setTimeout(function(){
-        b.classList.remove('ok');
-        b.innerHTML='<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
-      },1600);
-    }
-    showToast('Copiado: '+num);
-  });
-}
-function showToast(msg){
-  document.getElementById('toast-msg').textContent=msg;
-  var el=document.getElementById('toast');
-  el.classList.add('show');
-  clearTimeout(_t);
-  _t=setTimeout(function(){el.classList.remove('show');},2300);
+/* ════════════════════════════
+   TOGGLE via estado persistido
+════════════════════════════ */
+function toggle(id){
+  abertos[id]=!abertos[id];
+  render();
 }
 
-/* ══════════════════════════════════
-   CLOCK
-══════════════════════════════════ */
+/* ════════════════════════════
+   COPIAR
+════════════════════════════ */
+var _t;
+function copiar(id,num){
+  navigator.clipboard.writeText(num).then(function(){
+    var b=document.getElementById(id);
+    if(b){b.classList.add('btn-ok');b.textContent='✓';
+      setTimeout(function(){b.classList.remove('btn-ok');b.textContent='Copiar';},1500);}
+    document.getElementById('toast-msg').textContent='Copiado: '+num;
+    var el=document.getElementById('toast');
+    el.classList.add('show');
+    clearTimeout(_t);
+    _t=setTimeout(function(){el.classList.remove('show');},2000);
+  });
+}
+
+/* ════════════════════════════
+   RELÓGIO
+════════════════════════════ */
 function tick(){
   var n=new Date();
   document.getElementById('clock').textContent=
-    String(n.getHours()).padStart(2,'0')+':'+
-    String(n.getMinutes()).padStart(2,'0')+':'+
-    String(n.getSeconds()).padStart(2,'0');
+    String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
 }
-setInterval(tick,1000);tick();
+setInterval(tick,10000);tick();
 
 /* INIT */
-buildStats();buildFilters();render();
+buildStats();buildFiltros();render();
 </script>
 </body>
 </html>
